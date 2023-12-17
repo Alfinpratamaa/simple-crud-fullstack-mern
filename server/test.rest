@@ -1,0 +1,14 @@
+POST http://localhost:8001/api/books
+Content-Type: application/json
+
+{   
+    "title" : "jembut kuning",
+    "author" : "jembut",
+    "publishYear" : 2000
+}
+
+###
+GET http://localhost:8001/api/books/657ee86f036f9e08db56a971
+
+###
+PATCH 
