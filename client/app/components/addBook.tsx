@@ -41,7 +41,7 @@ const AddBook = ({ setAddBookSuccess }: SetBook) => {
       setIsOpen(false);
     } catch (error) {
       console.error("Error adding book:", error);
-      // Tambahkan penanganan error di sini jika diperlukan
+      enqueueSnackbar("failed to add book", { variant: "error" });
     }
   };
 

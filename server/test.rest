@@ -1,14 +1,115 @@
 POST http://localhost:8001/api/books
 Content-Type: application/json
 
-{   
-    "title" : "jembut kuning",
-    "author" : "jembut",
-    "publishYear" : 2000
+{
+    "books": [
+        {
+        "title": "Harry Potter and the Philosopher's Stone",
+        "author": "J.K. Rowling",
+        "publishYear": 1997
+    },
+    {
+        "title": "To Kill a Mockingbird",
+        "author": "Harper Lee",
+        "publishYear": 1960
+    },
+    {
+        "title": "1984",
+        "author": "George Orwell",
+        "publishYear": 1949
+    },
+    {
+        "title": "The Great Gatsby",
+        "author": "F. Scott Fitzgerald",
+        "publishYear": 1925
+    },
+    {
+        "title": "The Catcher in the Rye",
+        "author": "J.D. Salinger",
+        "publishYear": 1951
+    },
+    {
+        "title": "Pride and Prejudice",
+        "author": "Jane Austen",
+        "publishYear": 1813
+    },
+    {
+        "title": "The Hobbit",
+        "author": "J.R.R. Tolkien",
+        "publishYear": 1937
+    },
+    {
+        "title": "Brave New World",
+        "author": "Aldous Huxley",
+        "publishYear": 1932
+    },
+    {
+        "title": "The Lord of the Rings",
+        "author": "J.R.R. Tolkien",
+        "publishYear": 1954
+    },
+    {
+        "title": "The Chronicles of Narnia",
+        "author": "C.S. Lewis",
+        "publishYear": 1950
+    },
+    {
+        "title": "The Hitchhiker's Guide to the Galaxy",
+        "author": "Douglas Adams",
+        "publishYear": 1979
+    },
+    {
+        "title": "Animal Farm",
+        "author": "George Orwell",
+        "publishYear": 1945
+    },
+    {
+        "title": "Fahrenheit 451",
+        "author": "Ray Bradbury",
+        "publishYear": 1953
+    },
+    {
+        "title": "The Grapes of Wrath",
+        "author": "John Steinbeck",
+        "publishYear": 1939
+    },
+    {
+        "title": "Moby-Dick",
+        "author": "Herman Melville",
+        "publishYear": 1851
+    },
+    {
+        "title": "Frankenstein",
+        "author": "Mary Shelley",
+        "publishYear": 1818
+    },
+    {
+        "title": "Dracula",
+        "author": "Bram Stoker",
+        "publishYear": 1897
+    },
+    {
+        "title": "The Picture of Dorian Gray",
+        "author": "Oscar Wilde",
+        "publishYear": 1890
+    },
+    {
+        "title": "Jane Eyre",
+        "author": "Charlotte Brontë",
+        "publishYear": 1847
+    },
+    {
+        "title": "Wuthering Heights",
+        "author": "Emily Brontë",
+        "publishYear": 1847
+    },
+    {
+        "title": "Alice's Adventures in Wonderland",
+        "author": "Lewis Carroll",
+        "publishYear": 1865
+    }
+    ]
 }
 
 ###
-GET http://localhost:8001/api/books/657ee86f036f9e08db56a971
-
-###
-PATCH 
+DELETE http://localhost:8001/delete-by-year

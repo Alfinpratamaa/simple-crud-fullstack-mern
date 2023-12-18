@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { RiDeleteBin6Line } from "react-icons/ri";
-
+import { useSnackbar } from "notistack";
 interface Book {
   _id: string;
   title: string;
@@ -21,16 +21,18 @@ const DeleteBook = ({
   const handleModal = () => {
     setIsOpen(!isOpen);
   };
-
+  const { enqueueSnackbar } = useSnackbar();
   const handleDelete = async (id: string) => {
     try {
       const api = `http://localhost:8001/api/books/${id}`;
       await axios.delete(api);
+      enqueueSnackbar("Success Deleted A book", { variant: "success" });
       console.log("success delete book");
       setAddBookSuccess(true);
       setIsOpen(false);
     } catch (error) {
       console.error("Error delete book:", error);
+      enqueueSnackbar("failed to delete a book", { variant: "error" });
     }
   };
 

@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { CiEdit } from "react-icons/ci";
+import { useSnackbar } from "notistack";
 interface Book {
   _id: string;
   title: string;
@@ -22,15 +23,20 @@ const EditBook = ({
   const handleModal = () => {
     setIsOpen(!isOpen);
   };
-  const handleEdit = async (id: string) => {
+
+  const { enqueueSnackbar } = useSnackbar();
+  const handleEdit = async () => {
     try {
-      const api = `http://localhost:8001/api/books/${id}`;
+      const api = `http://localhost:8001/api/books/${book._id}`;
       const data = {
         title: title,
         author: author,
         publishYear: Number(publishYear),
       };
       await axios.patch(api, data);
+      enqueueSnackbar("Success edit book", {
+        variant: "success",
+      });
       console.log("success edit book");
 
       // Jika berhasil, kosongkan state dan navigasi ulang
@@ -41,7 +47,8 @@ const EditBook = ({
       setIsOpen(false);
     } catch (error) {
       console.error("Error adding book:", error);
-      // Tambahkan penanganan error di sini jika diperlukan
+      enqueueSnackbar("failed to edit book", { variant: "error" });
+      // setAddBookSuccess(false);
     }
   };
 
@@ -56,7 +63,7 @@ const EditBook = ({
       <div className={isOpen ? "modal modal-open " : "modal"}>
         <div className="modal-box">
           <h3 className="font-bold text-lg">Add New Book</h3>
-          <form onSubmit={() => handleEdit(book._id)}>
+          <form>
             <div className="form-control w-full">
               <label className="label font-bold">Book Title</label>
               <input
@@ -94,7 +101,11 @@ const EditBook = ({
               <button type="button" className="btn" onClick={handleModal}>
                 cancel
               </button>
-              <button type="submit" className="btn text-white btn-success">
+              <button
+                type="button"
+                onClick={handleEdit}
+                className="btn text-white btn-success"
+              >
                 save
               </button>
             </div>
